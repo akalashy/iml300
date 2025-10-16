@@ -1,0 +1,17 @@
+h1 {
+    font-size: 100px;
+    color: rgb(18, 96, 151);
+ }
+ h1:hover{
+    color: aquamarine;
+    transition: 1s ease-in;
+
+ }
+
+ .purple {
+    color: purple;
+
+ }
+ .purple:hover {
+    color: pink;
+ }
