@@ -45,11 +45,11 @@ p:hover {
 
 h1,
 a {
-  animation: coolAnimation 3s infinite;
+  animation: coolAnimation 2s infinite;
 }
 
 #p1 {
-  animation: coolAnimation 5s infinite;
+  animation: coolAnimation 2s infinite;
 }
 
 @keyframes coolAnimation {
