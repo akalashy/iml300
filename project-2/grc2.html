@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Type in Color — Grapheme–Color Synesthesia</title>
+<h1><a href="grc.html">Grapheme-Color Synesthesia</a></h1>
+    <a href="grc.html">Main</a>
+<style>
+  :root{
+    --A:#a50e0e; --B:#fe55c0; --C:#f0c829; --D:#0099ff; --E:#66ffcc;
+    --F:#ff5715; --G:#00bfa6; --H:#28dbff; --I:#ffffff; --J:#ffb6c1;
+    --K:#279eff; --L:#47ff47; --M:#d31781; --N:#ff8c00; --O:#ffd700;
+    --P:#dc143c; --Q:#a9a9a9; --R:#cf009b; --S:#fc0082; --T:#5d48ff;
+    --U:#eaa2f4; --V:#7fffd4; --W:#ffff21; --X:#06ffff; --Y:#d4000b;
+    --Z:#c71585;
+    --0:#a25c47; --1:#26ccff; --2:#13ff7de1; --3:#c792ea; --4:#7fdbca;
+    --5:#ffb3a7; --6:#2ec4b6; --7:#ffe3a3; --8:#262929; --9:#ff0783;
+
+    --bg:#0f1117; --fg:#e6e6e6; --muted:#9aa0a6;
+  }
+
+  html,body{height:100%}
+  body{
+    margin:0; display:grid; place-items:center; background:var(--bg); color:var(--fg);
+    font-family: monospace;
+  }
+  .wrap{width:min(900px,92vw); padding:28px}
+  h1{font-weight:300; margin:0 0 .25em; font-size:clamp(24px,4vw,44px)}
+  p{color:var(--muted); margin:.25em 0 1.25em}
+  #editor{
+    min-height: 220px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: transparent;           
+    outline: none;
+    font-size: clamp(120px, 3.4vw, 32px);
+    letter-spacing: .5px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    caret-color: #ffffff;
+  }
+  #editor:empty::before{
+    content: "Type letters or numbers…";
+    color: #6b7280;
+  }
+  .palette{
+    margin-top:12px; font-size:14px; color:var(--muted)
+  }
+  .palette .swatch{display:inline-flex; align-items:center; gap:6px; margin:6px 10px 0 0}
+  .dot{width:14px; height:14px; border-radius:50%}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div id="editor" contenteditable="true" aria-label="Type letters or numbers here"></div>
+
+    <div class="palette" aria-hidden="true">
+      <span class="swatch"><span class="dot" style="background:var(--A)"></span>A</span>
+      <span class="swatch"><span class="dot" style="background:var(--E)"></span>E</span>
+      <span class="swatch"><span class="dot" style="background:var(--M)"></span>M</span>
+      <span class="swatch"><span class="dot" style="background:var(--0)"></span>0</span>
+      <span class="swatch"><span class="dot" style="background:var(--5)"></span>5</span>
+      <span class="swatch"><span class="dot" style="background:var(--9)"></span>9</span>
+    </div>
+  </div>
+
+<script>
+const editor = document.getElementById('editor');
+
+const map = {
+  a:'var(--A)', b:'var(--B)', c:'var(--C)', d:'var(--D)', e:'var(--E)', f:'var(--F)',
+  g:'var(--G)', h:'var(--H)', i:'var(--I)', j:'var(--J)', k:'var(--K)', l:'var(--L)',
+  m:'var(--M)', n:'var(--N)', o:'var(--O)', p:'var(--P)', q:'var(--Q)', r:'var(--R)',
+  s:'var(--S)', t:'var(--T)', u:'var(--U)', v:'var(--V)', w:'var(--W)', x:'var(--X)',
+  y:'var(--Y)', z:'var(--Z)',
+  '0':'var(--0)','1':'var(--1)','2':'var(--2)','3':'var(--3)','4':'var(--4)',
+  '5':'var(--5)','6':'var(--6)','7':'var(--7)','8':'var(--8)','9':'var(--9)'
+};
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function renderColored(){
+  const text = editor.innerText;
+  let html = "";
+  for (const ch of text){
+    if (ch === '\n'){ html += "<br>"; continue; }
+    const key = ch.toLowerCase();
+    const color = map[key];
+    if (color){
+      html += `<span style="color:${color}">${esc(ch)}</span>`;
+    } else {
+      html += esc(ch);
+    }
+  }
+  const posToEnd = () => {
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(editor);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  };
+  editor.innerHTML = html;
+  posToEnd();
+}
+
+editor.addEventListener('input', () => {
+  setTimeout(renderColored, 0);
+});
+editor.addEventListener('paste', e => {
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text');
+  document.execCommand('insertText', false, text); // paste as plain text
+});
+
+
+renderColored();
+</script>
+</body>
+</html>
