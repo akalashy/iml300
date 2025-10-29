@@ -19,6 +19,7 @@
       text-align: center;
       margin: 20px 0 10px;
       font-weight: 300;
+      z-index: 0;
     }
 
     a {
@@ -27,11 +28,13 @@
       color: #80c0ff;
       text-decoration: none;
       margin-bottom: 15px;
+      z-index: 0;
+      position: relative;
     }
 
     a:hover { text-decoration: underline; }
 
-    /* image style */
+    /* ✨ images default look */
     .img {
       position: absolute;
       width: 110px;
@@ -39,48 +42,59 @@
       object-fit: cover;
       border-radius: 16px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      opacity: 0.45; /* semi-transparent until hover */
+      filter: brightness(60%);
+      transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease,
+        filter 0.3s ease;
+      z-index: 1;
     }
+
+    /* 🌈 when hovering — image “opens” fully */
     .img:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 20px #ffffff40;
+      transform: scale(1.12);
+      box-shadow: 0 0 40px #ffffff90;
+      opacity: 1;
+      filter: brightness(100%);
+      z-index: 9999;
     }
   </style>
 </head>
 
 <body class="specialCenter">
   <h1>Your Color-Sound Experience</h1>
-  <a href="synesthesia.html"> <- </a>
+  <a href="synesthesia.html">← Main</a>
 
   <script>
     const items = [
-      { img: "a.jpg", sound: "1.mp3" },
-      { img: "b.jpg", sound: "2.mp3" },
-      { img: "c.jpg", sound: "3.mp3" },
-      { img: "d.jpg", sound: "4.mp3" },
-      { img: "e.jpg", sound: "5.mp3" },
-      { img: "f.jpg", sound: "6.mp3" },
-      { img: "g.jpg", sound: "7.mp3" },
-      { img: "h.jpg", sound: "8.mp3" },
-      { img: "i.jpg", sound: "9.mp3" },
-      { img: "j.jpg", sound: "10.mp3" },
-      { img: "k.jpg", sound: "11.mp3" },
-      { img: "l.jpg", sound: "12.mp3" },
-      { img: "m.jpg", sound: "13.mp3" },
-      { img: "n.jpg", sound: "14.mp3" },
-      { img: "o.jpg", sound: "15.mp3" },
-      { img: "p.jpg", sound: "16.mp3" },
-      { img: "q.jpg", sound: "17.mp3" },
-      { img: "r.jpg", sound: "18.mp3" },
-      { img: "s.jpg", sound: "19.mp3" },
-      { img: "t.jpg", sound: "20.mp3" },
-      { img: "u.jpg", sound: "21.mp3" },
-      { img: "v.jpg", sound: "22.mp3" },
-      { img: "w.jpg", sound: "23.mp3" },
-      { img: "x.jpg", sound: "24.mp3" },
-      { img: "y.jpg", sound: "25.mp3" },
-      { img: "z.jpg", sound: "26.mp3" }
-      
+      { img: "assets/a.jpg", sound: "assets/1.mp3" },
+      { img: "assets/b.jpg", sound: "assets/2.mp3" },
+      { img: "assets/c.jpg", sound: "assets/3.mp3" },
+      { img: "assets/d.jpg", sound: "assets/4.mp3" },
+      { img: "assets/e.jpg", sound: "assets/5.mp3" },
+      { img: "assets/f.jpg", sound: "assets/6.mp3" },
+      { img: "assets/g.jpg", sound: "assets/7.mp3" },
+      { img: "assets/h.jpg", sound: "assets/8.mp3" },
+      { img: "assets/i.jpg", sound: "assets/9.mp3" },
+      { img: "assets/j.jpg", sound: "assets/10.mp3" },
+      { img: "assets/k.jpg", sound: "assets/11.mp3" },
+      { img: "assets/l.jpg", sound: "assets/12.mp3" },
+      { img: "assets/m.jpg", sound: "assets/13.mp3" },
+      { img: "assets/n.jpg", sound: "assets/14.mp3" },
+      { img: "assets/o.jpg", sound: "assets/15.mp3" },
+      { img: "assets/p.jpg", sound: "assets/16.mp3" },
+      { img: "assets/q.jpg", sound: "assets/17.mp3" },
+      { img: "assets/r.jpg", sound: "assets/18.mp3" },
+      { img: "assets/s.jpg", sound: "assets/19.mp3" },
+      { img: "assets/t.jpg", sound: "assets/20.mp3" },
+      { img: "assets/u.jpg", sound: "assets/21.mp3" },
+      { img: "assets/v.jpg", sound: "assets/22.mp3" },
+      { img: "assets/w.jpg", sound: "assets/23.mp3" },
+      { img: "assets/x.jpg", sound: "assets/24.mp3" },
+      { img: "assets/y.jpg", sound: "assets/25.mp3" },
+      { img: "assets/z.jpg", sound: "assets/26.mp3" }
     ];
 
     const imgSize = 110;
@@ -96,7 +110,6 @@
       );
     }
 
-    // place each image randomly without overlap
     items.forEach(item => {
       const img = document.createElement("img");
       img.src = item.img;
@@ -105,19 +118,25 @@
       let x, y, tries = 0;
       do {
         x = Math.random() * (window.innerWidth - imgSize - margin);
-        y = Math.random() * (window.innerHeight - imgSize - margin - 100); // leave space for text at top
+        y = Math.random() * (window.innerHeight - imgSize - margin - 100);
         tries++;
         if (tries > 5000) break;
       } while (overlaps(x, y));
 
       img.style.left = x + "px";
-      img.style.top = (y + 100) + "px"; // push images below header
+      img.style.top = (y + 100) + "px";
       placed.push({ x, y });
 
       const audio = new Audio(item.sound);
-      img.addEventListener("click", () => {
-        audio.currentTime = 0;
-        audio.play();
+      audio.preload = "auto";
+
+      img.addEventListener("click", async () => {
+        try {
+          audio.currentTime = 0;
+          await audio.play();
+        } catch (err) {
+          console.warn("Audio play error:", err);
+        }
       });
 
       document.body.appendChild(img);
@@ -125,8 +144,7 @@
   </script>
 
   <p style="text-align:center;margin-top:40px;">
-    <a href="synfinal.html">is this all?</a>
+    <a href="synfinal.html">Is This All?</a>
   </p>
-
 </body>
 </html>
