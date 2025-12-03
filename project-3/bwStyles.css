@@ -1,0 +1,649 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000;
+  color: #8fd2e8;
+  font-family: monospace;
+  position: relative;
+}
+
+
+.top-nav {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.nav-box {
+  width: 160px;
+  height: 160px;
+  background-color: #8fd2e8;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-box::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;          
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-box:hover::after {
+  color: #e5ecff;
+}
+
+.nav-box:hover {
+  background-color: #021f30;
+  font-family: monospace;
+  font-size:larger;
+}
+
+.main-title {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  font-family: monospace;
+  text-align: right;
+  font-size: 30px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.strike-red {
+  text-decoration: line-through;
+  text-decoration-color: #830214;
+  text-decoration-thickness: 3px;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE BODY (used on home) */
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000;
+  color: #8fd2e8;
+  font-family: monospace;
+  position: relative;
+}
+
+.top-nav {
+  position: fixed;     /* stays on top and never moves */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 9999;       /* keeps it above all content */
+}
+
+
+.nav-box {
+  width: 160px;
+  height: 160px;
+  background-color: #8fd2e8;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-box::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-box:hover::after {
+  color: #e5ecff;
+}
+
+.nav-box:hover {
+  background-color: #021f30;
+  font-family: monospace;
+  font-size: larger;
+}
+
+/* HOME TITLE (ONLY USED ON HOME PAGE) */
+.main-title {
+  position: absolute;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  font-family: monospace;
+  text-align: right;
+  font-size: 30px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.strike-red {
+  text-decoration: line-through;
+  text-decoration-color: #830214;
+  text-decoration-thickness: 3px;
+}
+/* ---------- BACKGROUND PAGE LAYOUT ---------- */
+
+/* Override base body for the background page specifically */
+.background-page {
+  height: auto;
+  min-height: 100vh;
+  overflow: auto;          /* allow scrolling because text is long */
+}
+
+/* Main container under the nav */
+.background-content {
+  width: 100%;
+  margin-top: 220px;
+  padding: 0 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Make all boxes fit 4 per row */
+.info-box {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 16px 18px;
+  width: calc(25% - 20px);     /* ✔ 4 boxes per row */
+  min-width: 250px;            /* keeps readability if screen is smaller */
+  font-family: monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* Box titles */
+.info-box h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* On smaller screens, boxes stack but stay under the nav */
+@media (max-width: 900px) {
+  .background-content {
+    margin-top: 220px;
+    padding: 0 16px 32px;
+    justify-content: flex-start;
+  }
+
+  .info-box {
+    max-width: 100%;
+  }
+}
+
+/* ---------- MINI GAME PAGE (CHAT-STYLE) ---------- */
+
+.minigame-page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: monospace;
+  height: auto;
+  min-height: 100vh;
+  overflow: auto; /* allow scroll if needed */
+}
+
+/* main content under nav */
+.minigame-content {
+  width: 100%;
+  margin-top: 220px;      /* space under the rectangles */
+  padding: 0 16px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* header text */
+.minigame-header {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.minigame-header h1 {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.minigame-header p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+/* chat container */
+.chat-wrapper {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  padding: 16px 14px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* each scenario = one mini 'thread' */
+.scenario {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* rows inside the chat (incoming, choices, feedback) */
+.chat-row {
+  display: flex;
+}
+
+/* incoming + feedback bubbles */
+.chat-bubble {
+  display: inline-block;
+  max-width: 90%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* incoming message style */
+.incoming .chat-bubble {
+  background-color: #111111;
+  border: 1px solid #ffffff;
+  align-self: flex-start;
+}
+
+/* feedback message style (guide/system reply) */
+.feedback-row .chat-bubble {
+  border: 1px dashed #888888;
+  color: #d0d0d0;
+  font-size: 0.8rem;
+}
+
+/* choices row: buttons styled like outgoing messages */
+.choices {
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end; /* replies aligned to the right */
+}
+
+/* option buttons as reply bubbles */
+.option-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 14px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  max-width: 90%;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+/* hover: invert colors slightly */
+.option-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+/* active (clicked) option stays inverted */
+.option-btn.active-option {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* feedback text bubble */
+.feedback-text {
+  min-height: 1.2em; /* reserve a bit of space before click */
+}
+
+/* larger screens: more breathing room */
+@media (min-width: 900px) {
+  .minigame-content {
+    padding: 0 40px 40px;
+  }
+}
+
+/* ---------- VIDEO REPORT PAGE ---------- */
+
+.video-page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: monospace;
+  height: auto;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.video-content {
+  width: 100%;
+  margin-top: 220px;    /* keeps content under the blue rectangles */
+  padding: 0 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-header {
+  max-width: 700px;
+  margin: 10 auto 30px auto;
+  text-align: left;
+}
+
+.video-header h1 {
+  font-size: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.video-header p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+/* video container */
+.video-wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* the video itself */
+.report-video {
+  width: 100%;
+  border: 1px solid #ffffff;
+  background-color: #000;
+}
+  
+@media (max-width: 800px) {
+  .video-content {
+    padding: 0 16px 32px;
+  }
+}
+
+/* ---------- ABOUT PAGE ---------- */
+
+.about-page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: monospace;
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
+}
+
+.about-content {
+  width: 100%;
+  margin-top: 220px; /* space under nav */
+  display: flex;
+  justify-content: center;
+  padding: 0 40px 60px;
+}
+
+.about-box {
+  max-width: 750px;
+  border: 1px solid #ffffff;
+  padding: 30px 32px;
+  background-color: rgba(0, 0, 0, 0.7);
+  line-height: 1.7;
+}
+
+.about-box h1 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.about-box p {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  color: #e3e3e3;
+}
+
+@media (max-width: 800px) {
+  .about-content {
+    padding: 0 20px 40px;
+  }
+
+  .about-box {
+    padding: 24px;
+  }
+}
+
+/* ---------- MANIPULATIONS PAGE WITH HOLES ---------- */
+
+.manip-page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: monospace;
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
+}
+
+.manip-content {
+  width: 100%;
+  margin-top: 220px; /* under nav */
+  padding: 0 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manip-header {
+  max-width: 1750px;
+  margin: 0 auto 32px auto;
+}
+
+.manip-header h1 {
+  font-size: 103px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.manip-header p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* GRID */
+.manip-grid {
+  width: 100%;
+  max-width: 950px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+/* WRAPPER for card + hole */
+.manip-card-wrapper {
+  position: relative;
+  padding-bottom: 32px; /* space for the hole */
+}
+
+/* CARD */
+.manip-card {
+  border: 1px solid #ffffff;
+  padding: 16px 18px;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  transition: transform 0.2s ease;
+}
+
+/* CARD hover lift */
+.manip-card:hover {
+  transform: translateY(-6px);
+}
+
+/* HOLE under card */
+.manip-card-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  height: 22px;
+  background-color: #8fd2e8; /* SAME BLUE as nav rectangles */
+  border-radius: 50%;
+  filter: blur(3px);
+  opacity: 0.7;
+
+  /* animation */
+  animation: holePulse 4s ease-in-out infinite;
+}
+
+@keyframes holePulse {
+  0% { width: 62%; opacity: 0.6; }
+  50% { width: 70%; opacity: 0.75; }
+  100% { width: 62%; opacity: 0.6; }
+}
+
+.manip-card h2 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+/*\ RESPONSIVE LAYOUT */
+@media (max-width: 1000px) {
+  .manip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .manip-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manip-content {
+    padding: 0 20px 40px;
+  }
+}
+
+
+/* ---------- SAFETY PAGE ---------- */
+
+.safety-page {
+  background-color: #000;
+  color: #ffffff;
+  font-family: monospace;
+  min-height: 100vh;
+  height: auto;
+  overflow: auto;
+}
+
+.safety-content {
+  width: 100%;
+  margin-top: 220px; /* space under nav rectangles */
+  padding: 0 40px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.safety-header {
+  max-width: 1750px;
+  margin: 0 auto 32px auto;
+}
+
+.safety-header h1 {
+  font-size: 127px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.safety-header p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* grid of safety cards */
+.safety-grid {
+  width: 100%;
+  max-width: 950px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.safety-card {
+  border: 1px solid #ffffff;
+  padding: 16px 18px;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.safety-card h2 {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+/* responsive layout: 2 columns then 1 */
+@media (max-width: 1000px) {
+  .safety-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .safety-content {
+    padding: 0 20px 40px;
+  }
+
+  .safety-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mini Game – Beyond the Blue Whale Game</title>
+    <link rel="stylesheet" href="bwStyles.css" />
+
+    <!-- jQuery + game logic -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="bwMiniGame.js"></script>
+  </head>
+
+  <body class="minigame-page">
+    <!-- NAV: same as on other pages -->
+    <nav class="top-nav">
+      <a href="bwHome.html" class="nav-box" data-label="HOME"></a>
+      <a href="bwBackground.html" class="nav-box" data-label="BACKGROUND"></a>
+      <a href="bwVideo.html" class="nav-box" data-label="VIDEO REPORT"></a>
+      <a href="bwManipulations.html" class="nav-box" data-label="MANIPULATIONS"></a>
+      <a href="bwSafety.html" class="nav-box" data-label="SAFETY"></a>
+      <a href="bwMiniGame.html" class="nav-box" data-label="MINI GAME"></a>
+      <a href="bwAbout.html" class="nav-box" data-label="ABOUT"></a>
+    </nav>
+
+    <main class="minigame-content">
+      <section class="minigame-header">
+        <h1>Mini Game: Spot the Red Flags</h1>
+        <p>
+        
+        </p>
+      </section>
+
+      <section class="chat-wrapper">
+        <!-- SCENARIO 1 -->
+        <article class="scenario">
+          <!-- incoming message -->
+          <div class="chat-row incoming">
+            <div class="chat-bubble">
+              “Let’s keep our chats a secret. Don’t tell anyone what we talk about, okay?”
+            </div>
+          </div>
+
+          <!-- your possible replies -->
+          <div class="chat-row choices">
+            <button
+              class="option-btn"
+              data-feedback="This answer is risky because it agrees to secrecy. Manipulators often ask you to hide things from people who could support you."
+            >
+              Okay, I won’t tell anyone.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="This answer protects your boundaries. Refusing to keep secrets from trusted people makes it harder for manipulation to continue."
+            >
+              I’m not comfortable keeping this a secret.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="Questioning the secrecy is a step in the right direction. You still deserve to talk to someone you trust if something feels wrong."
+            >
+              Why does it have to be a secret?
+            </button>
+          </div>
+
+          <!-- feedback as a 'system' message -->
+          <div class="chat-row feedback-row">
+            <div class="chat-bubble feedback-text"></div>
+          </div>
+        </article>
+
+        <!-- SCENARIO 2 -->
+        <article class="scenario">
+          <div class="chat-row incoming">
+            <div class="chat-bubble">
+              “If you really care about me, you’ll do what I ask. Don’t disappoint me.”
+            </div>
+          </div>
+
+          <div class="chat-row choices">
+            <button
+              class="option-btn"
+              data-feedback="This answer gives in to emotional pressure. When someone uses guilt to control you, it’s a sign they may not respect your boundaries."
+            >
+              Fine, I’ll do it so you’re not mad.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="This answer challenges emotional blackmail. Caring about someone should not depend on always saying yes or doing what they want."
+            >
+              Caring doesn’t mean saying yes to everything.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="You are noticing the pressure and pushing back a little. It can still help to talk to someone you trust about what is happening."
+            >
+              Why are you putting this on me?
+            </button>
+          </div>
+
+          <div class="chat-row feedback-row">
+            <div class="chat-bubble feedback-text"></div>
+          </div>
+        </article>
+
+        <!-- SCENARIO 3 -->
+        <article class="scenario">
+          <div class="chat-row incoming">
+            <div class="chat-bubble">
+              “Don’t talk to your friends or family about this. They just won’t understand us.”
+            </div>
+          </div>
+
+          <div class="chat-row choices">
+            <button
+              class="option-btn"
+              data-feedback="Agreeing to this can isolate you from people who could help. Isolation is a common tactic used to keep control over someone."
+            >
+              Okay, I’ll keep it between us.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="This answer supports your safety. Staying connected to people you trust is one of the strongest protections against manipulation."
+            >
+              I talk to people I trust when I feel unsure.
+            </button>
+            <button
+              class="option-btn"
+              data-feedback="You’re questioning the request, which is good. You still deserve to share concerns with someone you trust in your life."
+            >
+              Why don’t you want me to tell them?
+            </button>
+          </div>
+
+          <div class="chat-row feedback-row">
+            <div class="chat-bubble feedback-text"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
