@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Arena-Inspired UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="draft.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="#" class="logo">arena-esque</a>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active">Home</a>
+          <a href="#" class="nav-item">Channels</a>
+          <a href="#" class="nav-item">Blocks</a>
+          <a href="#" class="nav-item">Profile</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <a href="#" class="nav-item subtle">Settings</a>
+          <a href="#" class="nav-item subtle">Log out</a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <h1 class="page-title">Your channels</h1>
+            <p class="page-subtitle">
+              A quiet place to collect, connect, and organize things you care about.
+            </p>
+          </div>
+
+          <div class="topbar-right">
+            <form class="search">
+              <input
+                type="text"
+                class="search-input"
+                placeholder="Search channels, blocks, people…"
+              />
+            </form>
+          </div>
+        </header>
+
+        <!-- CONTENT LAYOUT -->
+        <section class="content-layout">
+          <!-- CHANNEL LIST -->
+          <section class="channels">
+            <header class="section-header">
+              <h2 class="section-title">Channels</h2>
+              <button class="ghost-button">+ New channel</button>
+            </header>
+
+            <ul class="channel-list">
+              <li class="channel-item">
+                <div class="channel-meta">
+                  <h3 class="channel-title">Design references</h3>
+                  <p class="channel-subtitle">57 blocks · updated 2 hours ago</p>
+                </div>
+                <span class="channel-tag">Private</span>
+              </li>
+
+              <li class="channel-item">
+                <div class="channel-meta">
+                  <h3 class="channel-title">Care work & social justice</h3>
+                  <p class="channel-subtitle">23 blocks · updated yesterday</p>
+                </div>
+                <span class="channel-tag">Public</span>
+              </li>
+
+              <li class="channel-item">
+                <div class="channel-meta">
+                  <h3 class="channel-title">Synesthesia sketches</h3>
+                  <p class="channel-subtitle">12 blocks · updated 3 days ago</p>
+                </div>
+                <span class="channel-tag">Private</span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- BLOCKS GRID -->
+          <section class="blocks">
+            <header class="section-header">
+              <h2 class="section-title">Recent blocks</h2>
+              <button class="ghost-button">View all</button>
+            </header>
+
+            <div class="blocks-grid">
+              <article class="block-card">
+                <p class="block-type">Text</p>
+                <p class="block-title">“The locus of power in the field of the gaze…”</p>
+                <p class="block-meta">From: Surveillance & self-identity</p>
+              </article>
+
+              <article class="block-card">
+                <p class="block-type">Link</p>
+                <p class="block-title">How to write non-violent creative code</p>
+                <p class="block-meta">p5.js community notes</p>
+              </article>
+
+              <article class="block-card">
+                <p class="block-type">Image</p>
+                <p class="block-title">Glitch texture — blue noise grid</p>
+                <p class="block-meta">Added to: Design references</p>
+              </article>
+
+              <article class="block-card">
+                <p class="block-type">Text</p>
+                <p class="block-title">Care basket builder — interaction ideas</p>
+                <p class="block-meta">Draft notes</p>
+              </article>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
