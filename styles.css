@@ -1,0 +1,214 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  min-height: 100vh;
+}
+
+/* HERO SECTION */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* left and right sides equal width */
+  align-items: flex-start;         /* top alignment */
+  column-gap: 2rem;
+  padding: 2rem 3vw 3rem;
+  border-bottom: 1px solid rgba(205, 0, 0, 0.2);
+}
+
+/* LEFT: NAME SIDE */
+.hero-left {
+  text-align: right;
+}
+
+/* Name wrapper fills the left column visually */
+.name-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: 122px; /* BIG name to fill left side */
+  font-weight: 700;
+  line-height: 1;
+  margin-top: -0.5rem;  /* move name a bit higher */
+}
+
+.name-short {
+  opacity: 0;
+  filter: blur(14px);
+  padding-top: 2.2rem;
+  color: #660000;
+  font-family: monospace;
+  font-size: 1.4em;   /* ← 130% of the big name */
+}
+
+/* Two name states stacked exactly on top of each other */
+.name {
+  position: absolute;
+  right: 0;
+  top: 0;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+/* Full name (two lines) visible by default */
+.name-full {
+  opacity: 0.9;
+  filter: blur(3px);
+}
+
+
+
+/* When JS adds .is-hovered, we dissolve full name and reveal Elza */
+.name-wrapper.is-hovered .name-full {
+  opacity: 0;
+  filter: blur(14px);
+}
+
+.name-wrapper.is-hovered .name-short {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+/* RIGHT: TEXT SIDE */
+.hero-right {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  max-width: 95%;         /* use full right column */
+  padding-top: 1.4rem;       /* move text a little DOWN */
+}
+
+/* MAIN CONTENT */
+.content {
+  padding: 4rem 6vw 3rem;
+}
+
+/* SECTION LAYOUT */
+.section {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  flex: 0 0 180px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.section-body {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* LISTS */
+.section-body ul {
+  list-style: none;
+}
+
+.section-body li {
+  margin-bottom: 0.6rem;
+}
+
+/* LINKS */
+a {
+  color: #a10000;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(141, 114, 114, 0.4);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+  border-color: #7e0000;
+}
+
+/* VIBE CODINGS */
+.vibe-item {
+  margin-bottom: 1.4rem;
+}
+
+.vibe-note {
+  opacity: 0.8;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 1.5rem 6vw 2rem;
+  border-top: 1px solid rgba(253, 0, 0, 0.2);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+
+  .hero-left {
+    text-align: left;
+  }
+
+  .name {
+    right: auto;
+    left: 0;
+  }
+
+  .section {
+    flex-direction: column;
+  }
+
+  .section-title {
+    flex: none;
+  }
+}
+
+
+
+
+
+/* EXERCISES: 2 PER ROW */
+.ex-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.4rem 2rem;
+  margin-top: 1rem;
+}
+
+.ex-item a {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.ex-item iframe {
+  margin-top: 0.6rem;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: #000;
+}
+
+/* Mobile: stack to one column */
+@media (max-width: 800px) {
+  .ex-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
